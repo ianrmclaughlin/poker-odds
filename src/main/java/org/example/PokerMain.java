@@ -126,40 +126,65 @@ public class PokerMain {
     public String getWinningHand(PokerHand bestAdam, PokerHand bestEve) {
 
         if (bestAdam.handType.equals("High Card") && bestEve.handType.equals("High Card")) {
-
             for (Integer cardNumber = 5; cardNumber >= 1; cardNumber--) {
                 if (bestAdam.cards.get(cardNumber - 1).value < bestEve.cards.get(cardNumber - 1).value) return "Eve";
                 if (bestAdam.cards.get(cardNumber - 1).value > bestEve.cards.get(cardNumber - 1).value) return "Adam";
             }
-
             return "Split Pot";
         }
 
         if (bestAdam.handType.equals("One Pair") && bestEve.handType.equals("One Pair")) {
-
             if (bestAdam.cards.get(0).value > bestEve.cards.get(0).value) return "Adam";
             if (bestAdam.cards.get(0).value < bestEve.cards.get(0).value) return "Eve";
             if (bestAdam.cards.get(0).value == bestEve.cards.get(0).value) return "Split Pot";
         }
 
         if (bestAdam.handType.equals("Two Pair") && bestEve.handType.equals("Two Pair")) {
-
             int adamPair1 = bestAdam.cards.get(0).value;
             int adamPair2 = bestAdam.cards.get(2).value;
             int adamKicker = bestAdam.cards.get(4).value;
             int evePair1 = bestEve.cards.get(0).value;
             int evePair2 = bestEve.cards.get(2).value;
             int eveKicker = bestEve.cards.get(4).value;
-
             if (adamPair1 > evePair1) return "Adam";
-            if ((adamPair1 == evePair1) && (adamPair2 > evePair2)) return "Adam";
             if (adamPair1 < evePair1) return "Eve";
+            if ((adamPair1 == evePair1) && (adamPair2 > evePair2)) return "Adam";
             if ((adamPair1 == evePair1) && (adamPair2 < evePair2)) return "Eve";
             if ((adamPair1 == evePair1) && (adamPair2 == evePair2) && (adamKicker > eveKicker)) return "Adam";
             if ((adamPair1 == evePair1) && (adamPair2 == evePair2) && (adamKicker < eveKicker)) return "Eve";
             if ((adamPair1 == evePair1) && (adamPair2 == evePair2) && (adamKicker == eveKicker)) return "Split Pot";
-
         }
+
+        if (bestAdam.handType.equals("Three Of A Kind") && bestEve.handType.equals("Three Of A Kind")) {
+            if (bestAdam.cards.get(0).value > bestEve.cards.get(0).value) return "Adam";
+            if (bestAdam.cards.get(0).value < bestEve.cards.get(0).value) return "Eve";
+        }
+
+        if (bestAdam.handType.equals("Straight") && bestEve.handType.equals("Straight")) {
+            if (bestAdam.cards.get(0).value > bestEve.cards.get(0).value) return "Adam";
+            if (bestAdam.cards.get(0).value < bestEve.cards.get(0).value) return "Eve";
+        }
+
+        if (bestAdam.handType.equals("Flush") && bestEve.handType.equals("Flush")) {
+            if (bestAdam.cards.get(0).value > bestEve.cards.get(0).value) return "Adam";
+            if (bestAdam.cards.get(0).value < bestEve.cards.get(0).value) return "Eve";
+        }
+
+        if (bestAdam.handType.equals("Full House") && bestEve.handType.equals("Full House")) {
+            if (bestAdam.cards.get(0).value > bestEve.cards.get(0).value) return "Adam";
+            if (bestAdam.cards.get(0).value < bestEve.cards.get(0).value) return "Eve";
+        }
+
+        if (bestAdam.handType.equals("Four Of A Kind") && bestEve.handType.equals("Four Of A Kind")) {
+            if (bestAdam.cards.get(0).value > bestEve.cards.get(0).value) return "Adam";
+            if (bestAdam.cards.get(0).value < bestEve.cards.get(0).value) return "Eve";
+        }
+
+        if (bestAdam.handType.equals("Straight Flush") && bestEve.handType.equals("Straight Flush")) {
+            if (bestAdam.cards.get(0).value > bestEve.cards.get(0).value) return "Adam";
+            if (bestAdam.cards.get(0).value < bestEve.cards.get(0).value) return "Eve";
+        }
+
 
 
         // TODO - Add code for other winning hands
