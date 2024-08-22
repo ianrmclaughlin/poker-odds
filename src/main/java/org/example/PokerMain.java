@@ -123,30 +123,47 @@ public class PokerMain {
         return null;
     }
 
-    public String getWinningHand(PokerHand bestAdam,PokerHand bestEve) {
+    public String getWinningHand(PokerHand bestAdam, PokerHand bestEve) {
 
-        if (bestAdam.handType.equals("High Card") && bestEve.handType.equals("High Card") ) {
+        if (bestAdam.handType.equals("High Card") && bestEve.handType.equals("High Card")) {
 
-            for ( Integer cardNumber = 5; cardNumber >= 1; cardNumber-- ) {
-
-                if (bestAdam.cards.get(cardNumber-1).value < bestEve.cards.get(cardNumber-1).value ) {
-                    return "Eve";
-                }
-                if (bestAdam.cards.get(cardNumber-1).value > bestEve.cards.get(cardNumber-1).value ) {
-                    return "Adam";
-                }
+            for (Integer cardNumber = 5; cardNumber >= 1; cardNumber--) {
+                if (bestAdam.cards.get(cardNumber - 1).value < bestEve.cards.get(cardNumber - 1).value) return "Eve";
+                if (bestAdam.cards.get(cardNumber - 1).value > bestEve.cards.get(cardNumber - 1).value) return "Adam";
             }
+
             return "Split Pot";
         }
 
-        if (bestAdam.handType.equals("One Pair") && bestEve.handType.equals("One Pair") ) {
+        if (bestAdam.handType.equals("One Pair") && bestEve.handType.equals("One Pair")) {
 
             if (bestAdam.cards.get(0).value > bestEve.cards.get(0).value) return "Adam";
             if (bestAdam.cards.get(0).value < bestEve.cards.get(0).value) return "Eve";
             if (bestAdam.cards.get(0).value == bestEve.cards.get(0).value) return "Split Pot";
         }
+
+        if (bestAdam.handType.equals("Two Pair") && bestEve.handType.equals("Two Pair")) {
+
+            int adamPair1 = bestAdam.cards.get(0).value;
+            int adamPair2 = bestAdam.cards.get(2).value;
+            int adamKicker = bestAdam.cards.get(4).value;
+            int evePair1 = bestEve.cards.get(0).value;
+            int evePair2 = bestEve.cards.get(2).value;
+            int eveKicker = bestEve.cards.get(4).value;
+
+            if (adamPair1 > evePair1) return "Adam";
+            if ((adamPair1 == evePair1) && (adamPair2 > evePair2)) return "Adam";
+            if (adamPair1 < evePair1) return "Eve";
+            if ((adamPair1 == evePair1) && (adamPair2 < evePair2)) return "Eve";
+            if ((adamPair1 == evePair1) && (adamPair2 == evePair2) && (adamKicker > eveKicker)) return "Adam";
+            if ((adamPair1 == evePair1) && (adamPair2 == evePair2) && (adamKicker < eveKicker)) return "Eve";
+            if ((adamPair1 == evePair1) && (adamPair2 == evePair2) && (adamKicker == eveKicker)) return "Split Pot";
+
+        }
+
+
         // TODO - Add code for other winning hands
-        
+
         return null;
     }
 
@@ -233,7 +250,7 @@ public class PokerMain {
             bestStraightFlush = getBestStraight(clubs);
         }
 
-        if(bestStraightFlush==null) bestStraightFlush = new LinkedList<>();
+        if (bestStraightFlush == null) bestStraightFlush = new LinkedList<>();
 
         if (bestStraightFlush.size() == 5) {
             return bestStraightFlush;
@@ -252,7 +269,7 @@ public class PokerMain {
             bestStraightFlush = getBestStraight(diamonds);
         }
 
-        if(bestStraightFlush==null) bestStraightFlush = new LinkedList<>();
+        if (bestStraightFlush == null) bestStraightFlush = new LinkedList<>();
 
         if (bestStraightFlush.size() == 5) {
             return bestStraightFlush;
@@ -271,7 +288,7 @@ public class PokerMain {
             bestStraightFlush = getBestStraight(hearts);
         }
 
-        if(bestStraightFlush==null) bestStraightFlush = new LinkedList<>();
+        if (bestStraightFlush == null) bestStraightFlush = new LinkedList<>();
 
         if (bestStraightFlush.size() == 5) {
             return bestStraightFlush;
@@ -290,7 +307,7 @@ public class PokerMain {
             bestStraightFlush = getBestStraight(spades);
         }
 
-        if(bestStraightFlush==null) bestStraightFlush = new LinkedList<>();
+        if (bestStraightFlush == null) bestStraightFlush = new LinkedList<>();
 
         if (bestStraightFlush.size() == 5) {
             return bestStraightFlush;
@@ -298,7 +315,7 @@ public class PokerMain {
             bestStraightFlush.clear();
         }
 
-        if (bestStraightFlush.size()>0) {
+        if (bestStraightFlush.size() > 0) {
             return bestStraightFlush;
         } else {
             return null;
@@ -482,7 +499,7 @@ public class PokerMain {
             bestFlush.clear();
         }
 
-        if (bestFlush.size()>0) {
+        if (bestFlush.size() > 0) {
             Collections.reverse(bestFlush);
             return bestFlush;
         } else {

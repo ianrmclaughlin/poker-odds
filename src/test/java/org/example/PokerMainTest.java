@@ -1601,7 +1601,7 @@ public class PokerMainTest {
         Assertions.assertEquals("Eve", winner);
     }
     @Test
-    public void getWinningHandTest_pairSplitPot() {
+    public void getWinningHandTest_pairEve3s() {
 
         // GIVEN
         PokerMain pokerMain = new PokerMain();
@@ -1609,19 +1609,42 @@ public class PokerMainTest {
 
         PokerHand bestAdam = new PokerHand();
         bestAdam.cards = new LinkedList<>();
-        pokerMain.addCards(bestAdam.cards, "14C", "14D", "02H", "03S", "04C");
+        pokerMain.addCards(bestAdam.cards, "02C", "02D", "02H", "03S", "04C");
         bestAdam.handType = "One Pair";
 
         PokerHand bestEve = new PokerHand();
         bestEve.cards = new LinkedList<>();
-        pokerMain.addCards(bestEve.cards,  "14H", "14S", "02S", "03H", "04S");
+        pokerMain.addCards(bestEve.cards,  "03C", "03D", "05H", "06S", "07C");
         bestEve.handType = "One Pair";
 
         // WHEN
         winner = pokerMain.getWinningHand(bestAdam, bestEve);
 
         // THEN
-        Assertions.assertEquals("Split Pot", winner);
+        Assertions.assertEquals("Eve", winner);
+    }
+    @Test
+    public void getWinningHandTest_pairAdam3s() {
+
+        // GIVEN
+        PokerMain pokerMain = new PokerMain();
+        String winner;
+
+        PokerHand bestAdam = new PokerHand();
+        bestAdam.cards = new LinkedList<>();
+        pokerMain.addCards(bestAdam.cards, "03C", "03D", "02H", "03S", "04C");
+        bestAdam.handType = "One Pair";
+
+        PokerHand bestEve = new PokerHand();
+        bestEve.cards = new LinkedList<>();
+        pokerMain.addCards(bestEve.cards,  "02C", "02D", "05H", "06S", "07C");
+        bestEve.handType = "One Pair";
+
+        // WHEN
+        winner = pokerMain.getWinningHand(bestAdam, bestEve);
+
+        // THEN
+        Assertions.assertEquals("Adam", winner);
     }
     @Test
     public void getWinningHandTest_pairSplitPot() {
@@ -1646,4 +1669,168 @@ public class PokerMainTest {
         // THEN
         Assertions.assertEquals("Split Pot", winner);
     }
+    @Test
+    public void getWinningHandTest_twoPairAdamAceKing() {
+
+        // GIVEN
+        PokerMain pokerMain = new PokerMain();
+        String winner;
+
+        PokerHand bestAdam = new PokerHand();
+        bestAdam.cards = new LinkedList<>();
+        pokerMain.addCards(bestAdam.cards, "14C", "14D", "13H", "13S", "04C");
+        bestAdam.handType = "Two Pair";
+
+        PokerHand bestEve = new PokerHand();
+        bestEve.cards = new LinkedList<>();
+        pokerMain.addCards(bestEve.cards,  "13H", "13S", "12S", "12H", "04S");
+        bestEve.handType = "Two Pair";
+
+        // WHEN
+        winner = pokerMain.getWinningHand(bestAdam, bestEve);
+
+        // THEN
+        Assertions.assertEquals("Adam", winner);
+    }
+    @Test
+    public void getWinningHandTest_twoPairAdamAceKingEveAceQueen() {
+
+        // GIVEN
+        PokerMain pokerMain = new PokerMain();
+        String winner;
+
+        PokerHand bestAdam = new PokerHand();
+        bestAdam.cards = new LinkedList<>();
+        pokerMain.addCards(bestAdam.cards, "14C", "14D", "13H", "13S", "04C");
+        bestAdam.handType = "Two Pair";
+
+        PokerHand bestEve = new PokerHand();
+        bestEve.cards = new LinkedList<>();
+        pokerMain.addCards(bestEve.cards,  "14H", "14S", "12S", "12H", "04S");
+        bestEve.handType = "Two Pair";
+
+        // WHEN
+        winner = pokerMain.getWinningHand(bestAdam, bestEve);
+
+        // THEN
+        Assertions.assertEquals("Adam", winner);
+    }
+    @Test
+    public void getWinningHandTest_twoPairEveAceKingAdamKingQueen() {
+
+        // GIVEN
+        PokerMain pokerMain = new PokerMain();
+        String winner;
+
+        PokerHand bestAdam = new PokerHand();
+        bestAdam.cards = new LinkedList<>();
+        pokerMain.addCards(bestAdam.cards, "13C", "13D", "12H", "12S", "04C");
+        bestAdam.handType = "Two Pair";
+
+        PokerHand bestEve = new PokerHand();
+        bestEve.cards = new LinkedList<>();
+        pokerMain.addCards(bestEve.cards,  "14H", "14S", "13S", "13H", "04S");
+        bestEve.handType = "Two Pair";
+
+        // WHEN
+        winner = pokerMain.getWinningHand(bestAdam, bestEve);
+
+        // THEN
+        Assertions.assertEquals("Eve", winner);
+    }
+    @Test
+    public void getWinningHandTest_twoPairEveAceKingAdamAceQueen() {
+
+        // GIVEN
+        PokerMain pokerMain = new PokerMain();
+        String winner;
+
+        PokerHand bestAdam = new PokerHand();
+        bestAdam.cards = new LinkedList<>();
+        pokerMain.addCards(bestAdam.cards, "14C", "14D", "12H", "12S", "04C");
+        bestAdam.handType = "Two Pair";
+
+        PokerHand bestEve = new PokerHand();
+        bestEve.cards = new LinkedList<>();
+        pokerMain.addCards(bestEve.cards,  "14H", "14S", "13S", "13H", "04S");
+        bestEve.handType = "Two Pair";
+
+        // WHEN
+        winner = pokerMain.getWinningHand(bestAdam, bestEve);
+
+        // THEN
+        Assertions.assertEquals("Eve", winner);
+    }
+    @Test
+    public void getWinningHandTest_twoPairAdamKicker() {
+
+        // GIVEN
+        PokerMain pokerMain = new PokerMain();
+        String winner;
+
+        PokerHand bestAdam = new PokerHand();
+        bestAdam.cards = new LinkedList<>();
+        pokerMain.addCards(bestAdam.cards, "14C", "14D", "13H", "13S", "05C");
+        bestAdam.handType = "Two Pair";
+
+        PokerHand bestEve = new PokerHand();
+        bestEve.cards = new LinkedList<>();
+        pokerMain.addCards(bestEve.cards,  "14H", "14S", "13S", "13H", "04S");
+        bestEve.handType = "Two Pair";
+
+        // WHEN
+        winner = pokerMain.getWinningHand(bestAdam, bestEve);
+
+        // THEN
+        Assertions.assertEquals("Adam", winner);
+    }
+    @Test
+    public void getWinningHandTest_twoPairEveKicker() {
+
+        // GIVEN
+        PokerMain pokerMain = new PokerMain();
+        String winner;
+
+        PokerHand bestAdam = new PokerHand();
+        bestAdam.cards = new LinkedList<>();
+        pokerMain.addCards(bestAdam.cards, "14C", "14D", "13H", "13S", "04C");
+        bestAdam.handType = "Two Pair";
+
+        PokerHand bestEve = new PokerHand();
+        bestEve.cards = new LinkedList<>();
+        pokerMain.addCards(bestEve.cards,  "14H", "14S", "13S", "13H", "05S");
+        bestEve.handType = "Two Pair";
+
+        // WHEN
+        winner = pokerMain.getWinningHand(bestAdam, bestEve);
+
+        // THEN
+        Assertions.assertEquals("Eve", winner);
+    }
+    @Test
+    public void getWinningHandTest_twoPairSplitPot() {
+
+        // GIVEN
+        PokerMain pokerMain = new PokerMain();
+        String winner;
+
+        PokerHand bestAdam = new PokerHand();
+        bestAdam.cards = new LinkedList<>();
+        pokerMain.addCards(bestAdam.cards, "14C", "14D", "13H", "13S", "04C");
+        bestAdam.handType = "Two Pair";
+
+        PokerHand bestEve = new PokerHand();
+        bestEve.cards = new LinkedList<>();
+        pokerMain.addCards(bestEve.cards,  "14H", "14S", "13S", "13H", "04S");
+        bestEve.handType = "Two Pair";
+
+        // WHEN
+        winner = pokerMain.getWinningHand(bestAdam, bestEve);
+
+        // THEN
+        Assertions.assertEquals("Split Pot", winner);
+    }
+
+
+
 }
