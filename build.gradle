@@ -1,0 +1,15 @@
+plugins {
+    id 'java'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'com.jayway.jsonpath:json-path:2.8.0'
+    implementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+}
