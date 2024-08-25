@@ -125,6 +125,11 @@ public class PokerMain {
 
     public String getWinningHand(PokerHand bestAdam, PokerHand bestEve) {
 
+        if (bestAdam.handType.equals("High Card") && bestEve.handType.equals("Pair")) return "Eve";
+
+
+
+
         if (bestAdam.handType.equals("High Card") && bestEve.handType.equals("High Card")) {
             for (Integer cardNumber = 5; cardNumber >= 1; cardNumber--) {
                 if (bestAdam.cards.get(cardNumber - 1).value < bestEve.cards.get(cardNumber - 1).value) return "Eve";
@@ -158,31 +163,37 @@ public class PokerMain {
         if (bestAdam.handType.equals("Three Of A Kind") && bestEve.handType.equals("Three Of A Kind")) {
             if (bestAdam.cards.get(0).value > bestEve.cards.get(0).value) return "Adam";
             if (bestAdam.cards.get(0).value < bestEve.cards.get(0).value) return "Eve";
+            if (bestAdam.cards.get(0).value == bestEve.cards.get(0).value) return "Split Pot";
         }
 
         if (bestAdam.handType.equals("Straight") && bestEve.handType.equals("Straight")) {
             if (bestAdam.cards.get(0).value > bestEve.cards.get(0).value) return "Adam";
             if (bestAdam.cards.get(0).value < bestEve.cards.get(0).value) return "Eve";
+            if (bestAdam.cards.get(0).value == bestEve.cards.get(0).value) return "Split Pot";
         }
 
         if (bestAdam.handType.equals("Flush") && bestEve.handType.equals("Flush")) {
             if (bestAdam.cards.get(0).value > bestEve.cards.get(0).value) return "Adam";
             if (bestAdam.cards.get(0).value < bestEve.cards.get(0).value) return "Eve";
+            if (bestAdam.cards.get(0).value == bestEve.cards.get(0).value) return "Split Pot";
         }
 
         if (bestAdam.handType.equals("Full House") && bestEve.handType.equals("Full House")) {
             if (bestAdam.cards.get(0).value > bestEve.cards.get(0).value) return "Adam";
             if (bestAdam.cards.get(0).value < bestEve.cards.get(0).value) return "Eve";
+            if (bestAdam.cards.get(0).value == bestEve.cards.get(0).value) return "Split Pot";
         }
 
         if (bestAdam.handType.equals("Four Of A Kind") && bestEve.handType.equals("Four Of A Kind")) {
             if (bestAdam.cards.get(0).value > bestEve.cards.get(0).value) return "Adam";
             if (bestAdam.cards.get(0).value < bestEve.cards.get(0).value) return "Eve";
+            if (bestAdam.cards.get(0).value == bestEve.cards.get(0).value) return "Split Pot";
         }
 
         if (bestAdam.handType.equals("Straight Flush") && bestEve.handType.equals("Straight Flush")) {
             if (bestAdam.cards.get(0).value > bestEve.cards.get(0).value) return "Adam";
             if (bestAdam.cards.get(0).value < bestEve.cards.get(0).value) return "Eve";
+            if (bestAdam.cards.get(0).value < bestEve.cards.get(0).value) return "Split Pot";
         }
 
 
