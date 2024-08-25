@@ -126,9 +126,60 @@ public class PokerMain {
     public String getWinningHand(PokerHand bestAdam, PokerHand bestEve) {
 
         if (bestAdam.handType.equals("High Card") && bestEve.handType.equals("Pair")) return "Eve";
+        if (bestAdam.handType.equals("High Card") && bestEve.handType.equals("Two Pair")) return "Eve";
+        if (bestAdam.handType.equals("High Card") && bestEve.handType.equals("Three Of A Kind")) return "Eve";
+        if (bestAdam.handType.equals("High Card") && bestEve.handType.equals("Straight")) return "Eve";
+        if (bestAdam.handType.equals("High Card") && bestEve.handType.equals("Flush")) return "Eve";
+        if (bestAdam.handType.equals("High Card") && bestEve.handType.equals("Straight Flush")) return "Eve";
 
+        if (bestAdam.handType.equals("Pair") && bestEve.handType.equals("High Card")) return "Adam";
+        if (bestAdam.handType.equals("Pair") && bestEve.handType.equals("Two Pair")) return "Eve";
+        if (bestAdam.handType.equals("Pair") && bestEve.handType.equals("Three Of A Kind")) return "Eve";
+        if (bestAdam.handType.equals("Pair") && bestEve.handType.equals("Straight")) return "Eve";
+        if (bestAdam.handType.equals("Pair") && bestEve.handType.equals("Flush")) return "Eve";
+        if (bestAdam.handType.equals("Pair") && bestEve.handType.equals("Straight Flush")) return "Eve";
 
+        if (bestAdam.handType.equals("Pair") && bestEve.handType.equals("High Card")) return "Adam";
+        if (bestAdam.handType.equals("Pair") && bestEve.handType.equals("Two Pair")) return "Eve";
+        if (bestAdam.handType.equals("Pair") && bestEve.handType.equals("Three Of A Kind")) return "Eve";
+        if (bestAdam.handType.equals("Pair") && bestEve.handType.equals("Straight")) return "Eve";
+        if (bestAdam.handType.equals("Pair") && bestEve.handType.equals("Flush")) return "Eve";
+        if (bestAdam.handType.equals("Pair") && bestEve.handType.equals("Straight Flush")) return "Eve";
 
+        if (bestAdam.handType.equals("Two Pair") && bestEve.handType.equals("High Card")) return "Adam";
+        if (bestAdam.handType.equals("Two Pair") && bestEve.handType.equals("Pair")) return "Adam";
+        if (bestAdam.handType.equals("Two Pair") && bestEve.handType.equals("Three Of A Kind")) return "Eve";
+        if (bestAdam.handType.equals("Two Pair") && bestEve.handType.equals("Straight")) return "Eve";
+        if (bestAdam.handType.equals("Two Pair") && bestEve.handType.equals("Flush")) return "Eve";
+        if (bestAdam.handType.equals("Two Pair") && bestEve.handType.equals("Straight Flush")) return "Eve";
+
+        if (bestAdam.handType.equals("Three Of A Kind") && bestEve.handType.equals("High Card")) return "Adam";
+        if (bestAdam.handType.equals("Three Of A Kind") && bestEve.handType.equals("Pair")) return "Adam";
+        if (bestAdam.handType.equals("Three Of A Kind") && bestEve.handType.equals("Two Pair")) return "Adam";
+        if (bestAdam.handType.equals("Three Of A Kind") && bestEve.handType.equals("Straight")) return "Eve";
+        if (bestAdam.handType.equals("Three Of A Kind") && bestEve.handType.equals("Flush")) return "Eve";
+        if (bestAdam.handType.equals("Three Of A Kind") && bestEve.handType.equals("Straight Flush")) return "Eve";
+
+        if (bestAdam.handType.equals("Straight") && bestEve.handType.equals("High Card")) return "Adam";
+        if (bestAdam.handType.equals("Straight") && bestEve.handType.equals("Pair")) return "Adam";
+        if (bestAdam.handType.equals("Straight") && bestEve.handType.equals("Two Pair")) return "Adam";
+        if (bestAdam.handType.equals("Straight") && bestEve.handType.equals("Three Of A Kind")) return "Adam";
+        if (bestAdam.handType.equals("Straight") && bestEve.handType.equals("Flush")) return "Eve";
+        if (bestAdam.handType.equals("Straight") && bestEve.handType.equals("Straight Flush")) return "Eve";
+
+        if (bestAdam.handType.equals("Flush") && bestEve.handType.equals("High Card")) return "Adam";
+        if (bestAdam.handType.equals("Flush") && bestEve.handType.equals("Pair")) return "Adam";
+        if (bestAdam.handType.equals("Flush") && bestEve.handType.equals("Two Pair")) return "Adam";
+        if (bestAdam.handType.equals("Flush") && bestEve.handType.equals("Three Of A Kind")) return "Adam";
+        if (bestAdam.handType.equals("Flush") && bestEve.handType.equals("Straight")) return "Adam";
+        if (bestAdam.handType.equals("Flush") && bestEve.handType.equals("Straight Flush")) return "Eve";
+
+        if (bestAdam.handType.equals("Straight Flush") && bestEve.handType.equals("High Card")) return "Adam";
+        if (bestAdam.handType.equals("Straight Flush") && bestEve.handType.equals("Pair")) return "Adam";
+        if (bestAdam.handType.equals("Straight Flush") && bestEve.handType.equals("Two Pair")) return "Adam";
+        if (bestAdam.handType.equals("Straight Flush") && bestEve.handType.equals("Three Of A Kind")) return "Adam";
+        if (bestAdam.handType.equals("Straight Flush") && bestEve.handType.equals("Straight")) return "Adam";
+        if (bestAdam.handType.equals("Straight Flush") && bestEve.handType.equals("Flush")) return "Adam";
 
         if (bestAdam.handType.equals("High Card") && bestEve.handType.equals("High Card")) {
             for (Integer cardNumber = 5; cardNumber >= 1; cardNumber--) {

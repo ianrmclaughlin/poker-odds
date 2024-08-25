@@ -2257,13 +2257,61 @@ public class PokerMainTest {
         bestEve.cards = new LinkedList<>();
         pokerMain.addCards(bestEve.cards, "14C", "14C", "14C", "14C", "14C" );
 
-        // GIVEN
-        bestAdam.handType = "High Card";
-        bestEve.handType = "Pair";
-        // WHEN
-        winner = pokerMain.getWinningHand(bestAdam, bestEve);
-        // THEN
-        Assertions.assertEquals("Eve", winner);
+        // Adam High Card
+        bestAdam.handType = "High Card";bestEve.handType = "Pair";winner = pokerMain.getWinningHand(bestAdam, bestEve);Assertions.assertEquals("Eve", winner);
+        bestAdam.handType = "High Card";bestEve.handType = "Two Pair";winner = pokerMain.getWinningHand(bestAdam, bestEve);Assertions.assertEquals("Eve", winner);
+        bestAdam.handType = "High Card";bestEve.handType = "Three Of A Kind";winner = pokerMain.getWinningHand(bestAdam, bestEve);Assertions.assertEquals("Eve", winner);
+        bestAdam.handType = "High Card";bestEve.handType = "Straight";winner = pokerMain.getWinningHand(bestAdam, bestEve);Assertions.assertEquals("Eve", winner);
+        bestAdam.handType = "High Card";bestEve.handType = "Flush";winner = pokerMain.getWinningHand(bestAdam, bestEve);Assertions.assertEquals("Eve", winner);
+        bestAdam.handType = "High Card";bestEve.handType = "Straight Flush";winner = pokerMain.getWinningHand(bestAdam, bestEve);Assertions.assertEquals("Eve", winner);
+
+        // Adam Pair
+        bestAdam.handType = "Pair";bestEve.handType = "High Card";winner = pokerMain.getWinningHand(bestAdam, bestEve);Assertions.assertEquals("Adam", winner);
+        bestAdam.handType = "Pair";bestEve.handType = "Two Pair";winner = pokerMain.getWinningHand(bestAdam, bestEve);Assertions.assertEquals("Eve", winner);
+        bestAdam.handType = "Pair";bestEve.handType = "Three Of A Kind";winner = pokerMain.getWinningHand(bestAdam, bestEve);Assertions.assertEquals("Eve", winner);
+        bestAdam.handType = "Pair";bestEve.handType = "Straight";winner = pokerMain.getWinningHand(bestAdam, bestEve);Assertions.assertEquals("Eve", winner);
+        bestAdam.handType = "Pair";bestEve.handType = "Flush";winner = pokerMain.getWinningHand(bestAdam, bestEve);Assertions.assertEquals("Eve", winner);
+        bestAdam.handType = "Pair";bestEve.handType = "Straight Flush";winner = pokerMain.getWinningHand(bestAdam, bestEve);Assertions.assertEquals("Eve", winner);
+
+        // Adam Two Pair
+        bestAdam.handType = "Two Pair";bestEve.handType = "High Card";winner = pokerMain.getWinningHand(bestAdam, bestEve);Assertions.assertEquals("Adam", winner);
+        bestAdam.handType = "Two Pair";bestEve.handType = "Pair";winner = pokerMain.getWinningHand(bestAdam, bestEve);Assertions.assertEquals("Adam", winner);
+        bestAdam.handType = "Two Pair";bestEve.handType = "Three Of A Kind";winner = pokerMain.getWinningHand(bestAdam, bestEve);Assertions.assertEquals("Eve", winner);
+        bestAdam.handType = "Two Pair";bestEve.handType = "Straight";winner = pokerMain.getWinningHand(bestAdam, bestEve);Assertions.assertEquals("Eve", winner);
+        bestAdam.handType = "Two Pair";bestEve.handType = "Flush";winner = pokerMain.getWinningHand(bestAdam, bestEve);Assertions.assertEquals("Eve", winner);
+        bestAdam.handType = "Two Pair";bestEve.handType = "Straight Flush";winner = pokerMain.getWinningHand(bestAdam, bestEve);Assertions.assertEquals("Eve", winner);
+
+        // Adam Three Of A Kind
+        bestAdam.handType = "Three Of A Kind";bestEve.handType = "High Card";winner = pokerMain.getWinningHand(bestAdam, bestEve);Assertions.assertEquals("Adam", winner);
+        bestAdam.handType = "Three Of A Kind";bestEve.handType = "Pair";winner = pokerMain.getWinningHand(bestAdam, bestEve);Assertions.assertEquals("Adam", winner);
+        bestAdam.handType = "Three Of A Kind";bestEve.handType = "Two Pair";winner = pokerMain.getWinningHand(bestAdam, bestEve);Assertions.assertEquals("Adam", winner);
+        bestAdam.handType = "Three Of A Kind";bestEve.handType = "Straight";winner = pokerMain.getWinningHand(bestAdam, bestEve);Assertions.assertEquals("Eve", winner);
+        bestAdam.handType = "Three Of A Kind";bestEve.handType = "Flush";winner = pokerMain.getWinningHand(bestAdam, bestEve);Assertions.assertEquals("Eve", winner);
+        bestAdam.handType = "Three Of A Kind";bestEve.handType = "Straight Flush";winner = pokerMain.getWinningHand(bestAdam, bestEve);Assertions.assertEquals("Eve", winner);
+
+        // Adam Straight
+        bestAdam.handType = "Straight";bestEve.handType = "High Card";winner = pokerMain.getWinningHand(bestAdam, bestEve);Assertions.assertEquals("Adam", winner);
+        bestAdam.handType = "Straight";bestEve.handType = "Pair";winner = pokerMain.getWinningHand(bestAdam, bestEve);Assertions.assertEquals("Adam", winner);
+        bestAdam.handType = "Straight";bestEve.handType = "Two Pair";winner = pokerMain.getWinningHand(bestAdam, bestEve);Assertions.assertEquals("Adam", winner);
+        bestAdam.handType = "Straight";bestEve.handType = "Three Of A Kind";winner = pokerMain.getWinningHand(bestAdam, bestEve);Assertions.assertEquals("Adam", winner);
+        bestAdam.handType = "Straight";bestEve.handType = "Flush";winner = pokerMain.getWinningHand(bestAdam, bestEve);Assertions.assertEquals("Eve", winner);
+        bestAdam.handType = "Straight";bestEve.handType = "Straight Flush";winner = pokerMain.getWinningHand(bestAdam, bestEve);Assertions.assertEquals("Eve", winner);
+
+        // Adam Flush
+        bestAdam.handType = "Flush";bestEve.handType = "High Card";winner = pokerMain.getWinningHand(bestAdam, bestEve);Assertions.assertEquals("Adam", winner);
+        bestAdam.handType = "Flush";bestEve.handType = "Pair";winner = pokerMain.getWinningHand(bestAdam, bestEve);Assertions.assertEquals("Adam", winner);
+        bestAdam.handType = "Flush";bestEve.handType = "Two Pair";winner = pokerMain.getWinningHand(bestAdam, bestEve);Assertions.assertEquals("Adam", winner);
+        bestAdam.handType = "Flush";bestEve.handType = "Three Of A Kind";winner = pokerMain.getWinningHand(bestAdam, bestEve);Assertions.assertEquals("Adam", winner);
+        bestAdam.handType = "Flush";bestEve.handType = "Straight";winner = pokerMain.getWinningHand(bestAdam, bestEve);Assertions.assertEquals("Adam", winner);
+        bestAdam.handType = "Flush";bestEve.handType = "Straight Flush";winner = pokerMain.getWinningHand(bestAdam, bestEve);Assertions.assertEquals("Eve", winner);
+
+        // Adam Straight Flush
+        bestAdam.handType = "Straight Flush";bestEve.handType = "High Card";winner = pokerMain.getWinningHand(bestAdam, bestEve);Assertions.assertEquals("Adam", winner);
+        bestAdam.handType = "Straight Flush";bestEve.handType = "Pair";winner = pokerMain.getWinningHand(bestAdam, bestEve);Assertions.assertEquals("Adam", winner);
+        bestAdam.handType = "Straight Flush";bestEve.handType = "Two Pair";winner = pokerMain.getWinningHand(bestAdam, bestEve);Assertions.assertEquals("Adam", winner);
+        bestAdam.handType = "Straight Flush";bestEve.handType = "Three Of A Kind";winner = pokerMain.getWinningHand(bestAdam, bestEve);Assertions.assertEquals("Adam", winner);
+        bestAdam.handType = "Straight Flush";bestEve.handType = "Straight";winner = pokerMain.getWinningHand(bestAdam, bestEve);Assertions.assertEquals("Adam", winner);
+        bestAdam.handType = "Straight Flush";bestEve.handType = "Flush";winner = pokerMain.getWinningHand(bestAdam, bestEve);Assertions.assertEquals("Adam", winner);
     }
 
 
