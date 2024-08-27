@@ -15,12 +15,8 @@ public class PokerMainTest {
     @Test
     public void pokerMainTest() {
         PokerMain pokerMain = new PokerMain();
-        HashMap<String, Integer> winCountMap = pokerMain.pokerMain();
-        Assertions.assertTrue(winCountMap.get("14C14D") > 0, "14C14D > 0");
-        Assertions.assertTrue(winCountMap.get("14C14H") > 0, "14C14H > 0");
-        Assertions.assertTrue(winCountMap.get("14C14S") > 0, "14C14S > 0");
-        Assertions.assertTrue(winCountMap.get("03S02H") > 0, "03S02H > 0");
-        Assertions.assertEquals(TWO_CARD_COMBOS, winCountMap.size());
+        String[] winCount = pokerMain.pokerMain(2000000);
+        Assertions.assertFalse(winCount[0].equals("000000,ZZZZZZ"));
     }
 
     @Test
@@ -2295,7 +2291,7 @@ public class PokerMainTest {
 
         // Adam High Card
         bestAdam.handType = "High Card";
-        bestEve.handType = "Pair";
+        bestEve.handType = "One Pair";
         winner = pokerMain.getWinningHand(bestAdam, bestEve);
         Assertions.assertEquals("Eve", winner);
         bestEve.handType = "Two Pair";
@@ -2315,7 +2311,7 @@ public class PokerMainTest {
         Assertions.assertEquals("Eve", winner);
 
         // Adam Pair
-        bestAdam.handType = "Pair";
+        bestAdam.handType = "One Pair";
         bestEve.handType = "High Card";
         winner = pokerMain.getWinningHand(bestAdam, bestEve);
         Assertions.assertEquals("Adam", winner);
@@ -2340,7 +2336,7 @@ public class PokerMainTest {
         bestEve.handType = "High Card";
         winner = pokerMain.getWinningHand(bestAdam, bestEve);
         Assertions.assertEquals("Adam", winner);
-        bestEve.handType = "Pair";
+        bestEve.handType = "One Pair";
         winner = pokerMain.getWinningHand(bestAdam, bestEve);
         Assertions.assertEquals("Adam", winner);
         bestEve.handType = "Three Of A Kind";
@@ -2361,7 +2357,7 @@ public class PokerMainTest {
         bestEve.handType = "High Card";
         winner = pokerMain.getWinningHand(bestAdam, bestEve);
         Assertions.assertEquals("Adam", winner);
-        bestEve.handType = "Pair";
+        bestEve.handType = "One Pair";
         winner = pokerMain.getWinningHand(bestAdam, bestEve);
         Assertions.assertEquals("Adam", winner);
         bestEve.handType = "Two Pair";
@@ -2382,7 +2378,7 @@ public class PokerMainTest {
         bestEve.handType = "High Card";
         winner = pokerMain.getWinningHand(bestAdam, bestEve);
         Assertions.assertEquals("Adam", winner);
-        bestEve.handType = "Pair";
+        bestEve.handType = "One Pair";
         winner = pokerMain.getWinningHand(bestAdam, bestEve);
         Assertions.assertEquals("Adam", winner);
         bestEve.handType = "Two Pair";
@@ -2403,7 +2399,7 @@ public class PokerMainTest {
         bestEve.handType = "High Card";
         winner = pokerMain.getWinningHand(bestAdam, bestEve);
         Assertions.assertEquals("Adam", winner);
-        bestEve.handType = "Pair";
+        bestEve.handType = "One Pair";
         winner = pokerMain.getWinningHand(bestAdam, bestEve);
         Assertions.assertEquals("Adam", winner);
         bestEve.handType = "Two Pair";
@@ -2424,7 +2420,7 @@ public class PokerMainTest {
         bestEve.handType = "High Card";
         winner = pokerMain.getWinningHand(bestAdam, bestEve);
         Assertions.assertEquals("Adam", winner);
-        bestEve.handType = "Pair";
+        bestEve.handType = "One Pair";
         winner = pokerMain.getWinningHand(bestAdam, bestEve);
         Assertions.assertEquals("Adam", winner);
         bestEve.handType = "Two Pair";
