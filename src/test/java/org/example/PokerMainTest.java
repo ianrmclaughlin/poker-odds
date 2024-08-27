@@ -2523,27 +2523,25 @@ public class PokerMainTest {
         pokerMain.winningHoleCards.add(holeCards1);
 
         // WHEN
-        Map<String, Integer> winCount = pokerMain.showWinCount();
+        String[] winCount = pokerMain.showWinCount();
 
         // THEN
 
-        Integer holeCardCount = winCount.get("02C03D");
-        Assertions.assertEquals(1, holeCardCount);
+        Assertions.assertEquals("000001,02C03D", winCount[0]);
     }
 
     @Test
     public void showWinCountTest2() {
 
         PokerMain pokerMain = new PokerMain();
-
         List<PlayingCard> holeCards1 = new LinkedList<>();
         List<PlayingCard> holeCards2 = new LinkedList<>();
         List<PlayingCard> holeCards3 = new LinkedList<>();
 
-        pokerMain.addCards(holeCards1, "02C", "03D");
+        // GIVEN
+        pokerMain.addCards(holeCards1, "06C", "07D");
         pokerMain.addCards(holeCards2, "04C", "05D");
-        pokerMain.addCards(holeCards3, "06C", "07D");
-
+        pokerMain.addCards(holeCards3, "02C", "03D");
         pokerMain.winningHoleCards.add(holeCards1);
         pokerMain.winningHoleCards.add(holeCards2);
         pokerMain.winningHoleCards.add(holeCards2);
@@ -2551,13 +2549,13 @@ public class PokerMainTest {
         pokerMain.winningHoleCards.add(holeCards3);
         pokerMain.winningHoleCards.add(holeCards3);
 
-        Map<String, Integer> winCount = pokerMain.showWinCount();
+        // WHEN
+        String[] winCount = pokerMain.showWinCount();
 
-        Assertions.assertEquals(3,winCount.size());
-
-        Assertions.assertEquals(3,winCount.get("06C07D"));
-        Assertions.assertEquals(2,winCount.get("04C05D"));
-        Assertions.assertEquals(1,winCount.get("02C03D"));
+        // THEN
+        Assertions.assertEquals("000003,02C03D", winCount[0]);
+        Assertions.assertEquals("000002,04C05D", winCount[1]);
+        Assertions.assertEquals("000001,06C07D", winCount[2]);
     }
 
 

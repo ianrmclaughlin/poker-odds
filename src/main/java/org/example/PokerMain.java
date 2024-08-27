@@ -12,6 +12,7 @@ public class PokerMain {
     final Integer START_VALUE = 0;
     final Integer START_SUIT = 2;
     final Integer STRING_END = 3;
+    final Integer CARD_PAIR_COMBOS = 169;
 
     LinkedList<PlayingCard> cardDeck;
     List<List<PlayingCard>> winningHoleCards = new LinkedList<>();
@@ -939,7 +940,7 @@ public class PokerMain {
 
     }
 
-    public Map<String, Integer> showWinCount() {
+    public String[] showWinCount() {
 
         for (List<PlayingCard> holeCards : winningHoleCards) {
 
@@ -959,9 +960,20 @@ public class PokerMain {
         }
         Collection<String> cs = winCount.keySet();
 
+        String[] winCountArray = new String[CARD_PAIR_COMBOS];
+
+        for ( int n = 0; n < CARD_PAIR_COMBOS; n++) winCountArray[n] = "000000,ZZZZZZ";
+
+        Integer n = 0;
         for (String key : cs) {
-            System.out.println(key + "," + winCount.get(key));
+            String countString = String.format("%06d", winCount.get(key));
+            winCountArray[n] = countString + "," + key;
+            n++;
         }
-        return winCount;
+
+        Arrays.sort(winCountArray,Collections.reverseOrder());
+
+        for ( String s : winCountArray ) System.out.println(s);
+        return winCountArray;
     }
 }
