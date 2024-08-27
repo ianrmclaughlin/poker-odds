@@ -9,17 +9,13 @@ public class PokerMain {
     final Integer LOWEST_VALUE = 2;
     final Integer HIGHEST_VALUE = 14;
     final Integer COMMUNITY_CARD_COUNT = 5;
-    final Integer HAND_SIZE = 5;
     final Integer START_VALUE = 0;
     final Integer START_SUIT = 2;
     final Integer STRING_END = 3;
-    final Integer CARD_FIVE = 4;
-    final Integer CARD_FOUR = 3;
-    final Integer CARD_THREE = 2;
-    final Integer CARD_TWO = 1;
-    final Integer CARD_ONE = 0;
 
     LinkedList<PlayingCard> cardDeck;
+    List<List<PlayingCard>> winningHoleCards = new LinkedList<>();
+    Map<String, Integer> winCount = new HashMap<>();
 
     public HashMap<String, Integer> pokerMain() {
         HashMap<String, Integer> winCountMap = new HashMap<>();
@@ -35,6 +31,21 @@ public class PokerMain {
             n++;
         }
         return winCountMap;
+    }
+
+    public void storeWinningHoleCards(String winner, List<PlayingCard> holeCardsAdam, List<PlayingCard> holeCardsEve) {
+
+        if (winner.equals("Adam")) {
+            winningHoleCards.add(holeCardsAdam);
+        }
+        if (winner.equals("Eve")) {
+            winningHoleCards.add(holeCardsEve);
+        }
+        if (winner.equals("Split Pot")) {
+            winningHoleCards.add(holeCardsAdam);
+            winningHoleCards.add(holeCardsEve);
+        }
+
     }
 
     public LinkedList<PlayingCard> resetCardDeck() {
@@ -119,8 +130,8 @@ public class PokerMain {
 
         PokerHand bestAdam = getBestHand(holeCardsAdam, communityCards);
         PokerHand bestEve = getBestHand(holeCardsEve, communityCards);
-        //String winner = getWinningHand(bestAdam, bestEve);
-        return null;
+        String winner = getWinningHand(bestAdam, bestEve);
+        return winner;
     }
 
     public String getWinningHand(PokerHand bestAdam, PokerHand bestEve) {
@@ -244,9 +255,8 @@ public class PokerMain {
         if (bestAdam.handType.equals("Straight Flush") && bestEve.handType.equals("Straight Flush")) {
             if (bestAdam.cards.get(0).value > bestEve.cards.get(0).value) return "Adam";
             if (bestAdam.cards.get(0).value < bestEve.cards.get(0).value) return "Eve";
-            if (bestAdam.cards.get(0).value < bestEve.cards.get(0).value) return "Split Pot";
+            if (bestAdam.cards.get(0).value == bestEve.cards.get(0).value) return "Split Pot";
         }
-
 
 
         // TODO - Add code for other winning hands
@@ -927,5 +937,31 @@ public class PokerMain {
 
         return true;
 
+    }
+
+    public Map<String, Integer> showWinCount() {
+
+        for (List<PlayingCard> holeCards : winningHoleCards) {
+
+            PlayingCard card1 = holeCards.get(0);
+            PlayingCard card2 = holeCards.get(1);
+
+            String holeCardsString = String.format("%02d", card1.value) + card1.suit + String.format("%02d", card2.value) + card2.suit;
+
+            Integer cardCount = winCount.get(holeCardsString);
+
+            if (cardCount == null) {
+                winCount.put(holeCardsString, 1);
+            } else {
+                winCount.put(holeCardsString, cardCount + 1);
+            }
+
+        }
+        Collection<String> cs = winCount.keySet();
+
+        for (String key : cs) {
+            System.out.println(key + "," + winCount.get(key));
+        }
+        return winCount;
     }
 }
