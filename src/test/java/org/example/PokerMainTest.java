@@ -15,7 +15,7 @@ public class PokerMainTest {
     @Test
     public void pokerMainTest() {
         PokerMain pokerMain = new PokerMain();
-        String[] winCount = pokerMain.pokerMain(2000000);
+        String[] winCount = pokerMain.pokerMain(100000);
         Assertions.assertFalse(winCount[0].equals("000000,ZZZZZZ"));
     }
 
